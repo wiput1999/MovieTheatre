@@ -17,7 +17,7 @@
             <router-link to="/promotions">Promotion</router-link>
           </li>
           <li>
-            <router-link to="/login">SIGN IN</router-link>
+            <router-link to="/login" class="button">SIGN IN</router-link>
           </li>
         </ul>
       </div>
@@ -30,6 +30,7 @@
   position: absolute;
   width: 100%;
   z-index: 2;
+  background: rgba(47, 46, 46, 0.8);
 }
 
 .navbar-container {
@@ -38,7 +39,7 @@
   width: 80vw;
   height: 70px;
   display: flex;
-  border-bottom: #707070 solid 2px;
+  border-bottom: #fff solid 2px;
 }
 
 .navbar-header {
@@ -76,8 +77,18 @@
     color: #fff;
   }
 
+  a.router-link-exact-active {
+    text-decoration: underline;
+  }
+
   a:hover {
     text-decoration: underline;
   }
+}
+
+.button {
+  padding: 0.3em 1.7em;
+  border: #fff solid 2px;
+  border-radius: 25px;
 }
 </style>

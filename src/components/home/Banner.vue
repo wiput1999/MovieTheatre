@@ -6,8 +6,7 @@
     :autoplayTimeout="2000"
     :loop="true"
   >
-    <Slide class="banner"></Slide>
-    <Slide class="banner"></Slide>
+    <Slide class="banner" v-for="b in banners" :key="b.id" :style="b"></Slide>
   </Carousel>
 </template>
 
@@ -15,6 +14,15 @@
 import { Carousel, Slide } from 'vue-carousel'
 
 export default {
+  data: function () {
+    return {
+    }
+  },
+  computed: {
+    banners () {
+      return this.$store.state.banners.map(b => 'background-image: url("' + b.url + '");')
+    }
+  },
   components: {
     Carousel,
     Slide
@@ -25,7 +33,7 @@ export default {
 <style lang="scss" scoped>
 .banner {
   height: 100vh;
-  background: url("https://wallpapercave.com/wp/wp3154692.jpg") center;
   background-size: cover;
+  background-position: center top;
 }
 </style>

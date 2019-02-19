@@ -7,10 +7,18 @@
       <div class="navbar-wrapper">
         <ul class="navbar-menu-group"></ul>
         <ul class="navbar-menu-group">
-          <li>Home</li>
-          <li>Movie</li>
-          <li>Promotion</li>
-          <li>Sign in</li>
+          <li>
+            <router-link to="/">Home</router-link>
+          </li>
+          <li>
+            <router-link to="/movies">Movie</router-link>
+          </li>
+          <li>
+            <router-link to="/promotions">Promotion</router-link>
+          </li>
+          <li>
+            <router-link to="/login">SIGN IN</router-link>
+          </li>
         </ul>
       </div>
     </div>
@@ -38,6 +46,8 @@
   align-items: center;
   p {
     display: flex;
+    font-size: 1.3em;
+    font-weight: 600;
   }
 }
 
@@ -53,10 +63,21 @@
   list-style: none;
   margin: 0px;
   padding: 0px;
+  font-size: 0.9em;
+  text-transform: uppercase;
 
   li {
     display: list-item;
     margin-left: 1.4em;
+  }
+
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 }
 </style>

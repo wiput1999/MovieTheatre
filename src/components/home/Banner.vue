@@ -1,21 +1,33 @@
 <template>
-  <Carousel
-    :perPage="1"
-    :paginationEnabled="false"
-    :autoplay="true"
-    :autoplayTimeout="2000"
-    :loop="true"
-  >
-    <Slide class="banner" v-for="b in banners" :key="b.id" :style="b"></Slide>
-  </Carousel>
+  <v-wait for="banner.getItems">
+    <template slot="waiting">
+      <div class="loader" :v-show="loading">
+        <div>
+          <AtomSpinner :animation-duration="1000" :size="240" color="#fff"/>
+        </div>
+      </div>
+    </template>
+    <Carousel
+      :perPage="1"
+      :paginationEnabled="false"
+      :autoplay="true"
+      :autoplayTimeout="2000"
+      :loop="true"
+      :v-if="banners"
+    >
+      <Slide class="banner" v-for="b in banners" :key="b.id" :style="b"></Slide>
+    </Carousel>
+  </v-wait>
 </template>
 
 <script>
 import { Carousel, Slide } from 'vue-carousel'
+import { AtomSpinner } from 'epic-spinners'
 
 export default {
   data: function () {
     return {
+      loading: false
     }
   },
   computed: {
@@ -25,7 +37,9 @@ export default {
   },
   components: {
     Carousel,
-    Slide
+    Slide,
+    AtomSpinner
+
   }
 }
 </script>
@@ -35,5 +49,11 @@ export default {
   height: 100vh;
   background-size: cover;
   background-position: center top;
+}
+.loader {
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
 </style>

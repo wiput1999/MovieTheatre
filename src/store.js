@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import VueWait from 'vue-wait'
+
 import { db, storage } from './main'
 
 Vue.use(Vuex)
+Vue.use(VueWait)
 
 export default new Vuex.Store({
   state: {
@@ -14,7 +17,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    async getBanners ({ commit }) {
+    async getBanners ({ commit, dispatch }) {
+      dispatch('wait/start', 'banner.getItems')
+
       let banners = []
       let querySnapshot = await db.collection('banners').get()
 
@@ -26,6 +31,7 @@ export default new Vuex.Store({
       })
 
       commit('GET_BANNER', banners)
+      dispatch('wait/end', 'banner.getItems')
     }
   }
 })

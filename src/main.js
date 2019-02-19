@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import VueWait from 'vue-wait'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/storage'
@@ -8,6 +9,7 @@ import store from './store'
 
 Vue.config.productionTip = false
 
+// Firebase
 const config = {
   apiKey: 'AIzaSyCz0VvhM4AaW_S74pudbomtTyAdb0mV3jc',
   authDomain: 'w-movie-theatre.firebaseapp.com',
@@ -25,5 +27,8 @@ export const storage = firebase.storage()
 new Vue({
   router,
   store,
+  wait: new VueWait({
+    useVuex: true
+  }),
   render: h => h(App)
 }).$mount('#app')

@@ -1,5 +1,5 @@
 <template>
-  <Banner></Banner>
+  <Banner/>
 </template>
 
 <script>

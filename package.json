@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "vue": "^2.5.22",
+    "vue-carousel": "^0.17.0",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },

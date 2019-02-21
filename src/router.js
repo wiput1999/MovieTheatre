@@ -2,6 +2,7 @@ import Vue from 'vue'
 import HeyUI from 'heyui'
 import en from 'heyui/dist/locale/en-US'
 import Router from 'vue-router'
+
 import Home from './views/Home.vue'
 
 Vue.use(Router)
@@ -16,14 +17,24 @@ export default new Router({
       component: Home
     },
     {
-      path: '/movie',
-      name: 'movie',
-      component: () => import('./views/About.vue')
+      path: '/movies',
+      name: 'movies',
+      component: () => import('./views/Movies.vue')
     },
     {
       path: '/promotion',
       name: 'promotion',
       component: () => import('./views/About.vue')
+    },
+    {
+      path: '/seats',
+      name: 'seats',
+      component: () => import('./views/SeatSelect.vue')
+    },
+    {
+      path: '/time',
+      name: 'time',
+      component: () => import('./views/TimeSelect.vue')
     },
     {
       path: '/login',

@@ -4,9 +4,6 @@
       <div class="container">
         <Search/>
         <MovieList/>
-        <div class="row">
-          <a class="button">MORE</a>
-        </div>
       </div>
     </div>
   </div>
@@ -14,7 +11,7 @@
 
 <script>
 import Search from './Search.vue'
-import MovieList from './MovieList'
+import MovieList from './MovieList.vue'
 
 export default {
   data: function () {
@@ -32,13 +29,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.loader {
-  height: 100vh;
-  display: grid;
-  justify-content: center;
-  align-items: center;
-}
-
 .background {
   width: 100%;
   background-image: url("/assets/home/background.jpg");
@@ -49,13 +39,13 @@ export default {
 .content {
   width: 100%;
   margin-bottom: 6em;
-  background: rgba(63, 63, 63, 0.8);
+  background: rgba(34, 34, 34, 0.8);
 }
 
 .container {
   width: 80vw;
   margin: 0 auto;
-  padding: 3em 0;
+  padding: 100px 0;
 }
 
 @supports (

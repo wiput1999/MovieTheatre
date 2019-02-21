@@ -31,7 +31,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #ffffff;
   box-shadow: 0px 7px 28px rgba(0, 0, 0, 0.12);
   border-radius: 37px;
   width: 80%;

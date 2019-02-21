@@ -3,7 +3,9 @@
     <div class="navbar">
       <div class="navbar-container">
         <div class="navbar-header">
-          <p>MOVIE THEATRE</p>
+          <router-link to="/">
+            <p>MOVIE THEATRE</p>
+          </router-link>
         </div>
         <div class="navbar-wrapper">
           <ul class="navbar-menu-group"></ul>
@@ -58,6 +60,7 @@
   display: flex;
   align-items: center;
   p {
+    color: #fff;
     display: flex;
     font-size: 1.3em;
     font-weight: 600;
@@ -102,5 +105,27 @@
   padding: 0.3em 1.7em;
   border: #fff solid 2px;
   border-radius: 25px;
+}
+
+@media (max-width: 400px) {
+  .navbar-container {
+    width: 100%;
+  }
+
+  .navbar-header {
+    display: none;
+  }
+
+  .navbar-menu-group {
+    li {
+      margin: 0 0.7em;
+    }
+  }
+
+  .button {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+  }
 }
 </style>

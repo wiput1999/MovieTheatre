@@ -10,6 +10,7 @@ Vue.use(VueWait)
 export default new Vuex.Store({
   state: {
     banners: [],
+    movies: [],
     search: {
       movie: '',
       location: ''
@@ -24,6 +25,9 @@ export default new Vuex.Store({
     },
     SET_SEARCH_LOCATION (state, payload) {
       state.search.location = payload
+    },
+    GET_MOVIE (state, payload) {
+      state.movies = payload
     }
   },
   actions: {
@@ -42,6 +46,20 @@ export default new Vuex.Store({
 
       commit('GET_BANNER', banners)
       dispatch('wait/end', 'banner.getItems')
+    },
+
+    async getMovies ({ commit, dispatch }) {
+      dispatch('wait/start', 'movie.getItems')
+
+      let movies = []
+      let querySnapshot = await db.collection('movies').get()
+
+      querySnapshot.forEach(async doc => {
+        movies.push({ id: doc.id, ...doc.data() })
+      })
+
+      commit('GET_MOVIE', movies)
+      dispatch('wait/end', 'movie.getItems')
     }
   }
 })

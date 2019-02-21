@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Search from './Search.vue'
+import Search from '@/components/common/Search.vue'
 import MovieList from './MovieList.vue'
 
 export default {

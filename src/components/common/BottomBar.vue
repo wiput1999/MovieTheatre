@@ -59,14 +59,25 @@ export default {
 }
 
 .active {
-  color: rgb(193, 0, 0);
+  color: rgb(255, 255, 0);
 }
 
 @media (max-width: 400px) {
   .bottom-bar-container {
     width: 95vw;
     padding: 0;
-    text-align: center;
+  }
+
+  .bottom-bar-wrapper {
+    justify-content: center;
+
+    div {
+      display: none;
+    }
+  }
+
+  .active {
+    display: inline-flex !important;
   }
 }
 </style>

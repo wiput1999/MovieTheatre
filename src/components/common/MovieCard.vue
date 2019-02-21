@@ -1,14 +1,13 @@
 <template>
   <div class="movie-card">
-    <img
-      src="https://lh3.googleusercontent.com/3Ost-FvXYMVAs84hLxJAn9qqIh9s_YCC8oCySCuOWIJWIu8zPIuKYJ9FG_FEFBqKZoQnguVOuNAkg9kArkPM"
-    >
+    <img :src="movie.image">
   </div>
 </template>
 
 <script>
 
 export default {
+  props: ['movie'],
   data: function () {
     return {
 

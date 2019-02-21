@@ -48,7 +48,7 @@ export default {
 
 .content {
   width: 100%;
-  margin-bottom: 6em;
+  margin-bottom: 3em;
   background: rgba(63, 63, 63, 0.8);
 }
 

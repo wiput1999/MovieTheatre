@@ -38,24 +38,24 @@ export default {
 
 <style lang="scss" scoped>
 .movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   width: 80vw;
   margin: 0 auto;
   padding-top: 3em;
   flex: 1;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
 }
 
 .movie-tab {
-  width: 80vw;
-  padding-top: 1em;
-  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  width: 80vw;
+  padding-top: 1em;
+  margin: 0 auto;
   border-bottom: 2px #fff solid;
 
   div {

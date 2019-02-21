@@ -63,8 +63,10 @@ export default {
 }
 
 @media (max-width: 400px) {
-  .navbar-container {
-    width: 100%;
+  .bottom-bar-container {
+    width: 95vw;
+    padding: 0;
+    text-align: center;
   }
 }
 </style>

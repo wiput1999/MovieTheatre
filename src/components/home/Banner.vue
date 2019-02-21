@@ -13,8 +13,8 @@
         :paginationEnabled="false"
         :autoplay="true"
         :autoplayTimeout="2000"
+        :touchDrag="false"
         :loop="true"
-        :v-if="banners"
       >
         <Slide class="banner" v-for="b in banners" :key="b.id" :style="b"></Slide>
       </Carousel>

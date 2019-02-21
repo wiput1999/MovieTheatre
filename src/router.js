@@ -1,8 +1,12 @@
 import Vue from 'vue'
+import HeyUI from 'heyui'
+import en from 'heyui/dist/locale/en-US'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 
 Vue.use(Router)
+Vue.use(HeyUI)
+HeyUI.locale(en)
 
 export default new Router({
   routes: [
@@ -12,13 +16,24 @@ export default new Router({
       component: Home
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ './views/About.vue')
+      path: '/movie',
+      name: 'movie',
+      component: () => import('./views/About.vue')
+    },
+    {
+      path: '/promotion',
+      name: 'promotion',
+      component: () => import('./views/About.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('./views/About.vue')
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('./views/About.vue')
     }
   ]
 })

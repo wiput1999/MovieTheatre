@@ -1,25 +1,27 @@
 <template>
-  <div class="navbar">
-    <div class="navbar-container">
-      <div class="navbar-header">
-        <p>MOVIE THEATRE</p>
-      </div>
-      <div class="navbar-wrapper">
-        <ul class="navbar-menu-group"></ul>
-        <ul class="navbar-menu-group">
-          <li>
-            <router-link to="/">Home</router-link>
-          </li>
-          <li>
-            <router-link to="/movies">Movie</router-link>
-          </li>
-          <li>
-            <router-link to="/promotions">Promotion</router-link>
-          </li>
-          <li>
-            <router-link to="/login" class="button">SIGN IN</router-link>
-          </li>
-        </ul>
+  <div>
+    <div class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-header">
+          <p>MOVIE THEATRE</p>
+        </div>
+        <div class="navbar-wrapper">
+          <ul class="navbar-menu-group"></ul>
+          <ul class="navbar-menu-group">
+            <li>
+              <router-link to="/">Home</router-link>
+            </li>
+            <li>
+              <router-link to="/movies">Movie</router-link>
+            </li>
+            <li>
+              <router-link to="/promotions">Promotion</router-link>
+            </li>
+            <li>
+              <router-link to="/login" class="button">SIGN IN</router-link>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -29,8 +31,19 @@
 .navbar {
   position: absolute;
   width: 100%;
+  height: 70px;
   z-index: 2;
-  background: rgba(47, 46, 46, 0.8);
+  background: rgba(121, 121, 121, 0.8);
+}
+
+@supports (
+  (-webkit-backdrop-filter: blur(20px)) or (backdrop-filter: blur(20px))
+) {
+  .navbar {
+    background: rgba(54, 54, 54, 0.6);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+  }
 }
 
 .navbar-container {
@@ -39,7 +52,6 @@
   width: 80vw;
   height: 70px;
   display: flex;
-  border-bottom: #fff solid 2px;
 }
 
 .navbar-header {
@@ -78,11 +90,11 @@
   }
 
   a.router-link-exact-active {
-    text-decoration: underline;
+    border-bottom: #fff solid 2px;
   }
 
   a:hover {
-    text-decoration: underline;
+    border-bottom: #fff solid 2px;
   }
 }
 

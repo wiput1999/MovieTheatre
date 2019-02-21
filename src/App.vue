@@ -17,6 +17,7 @@ export default {
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700");
+@import url("https://cdn.jsdelivr.net/npm/heyui/themes/index.css");
 
 body {
   font-family: "Raleway", Helvetica, Arial, sans-serif;

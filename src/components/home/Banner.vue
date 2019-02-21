@@ -1,23 +1,25 @@
 <template>
-  <v-wait for="banner.getItems">
-    <template slot="waiting">
-      <div class="loader" :v-show="loading">
-        <div>
-          <AtomSpinner :animation-duration="1000" :size="240" color="#fff"/>
+  <div class="banner-wrapper">
+    <v-wait for="banner.getItems">
+      <template slot="waiting">
+        <div class="loader" :v-show="loading">
+          <div>
+            <AtomSpinner :animation-duration="1000" :size="240" color="#fff"/>
+          </div>
         </div>
-      </div>
-    </template>
-    <Carousel
-      :perPage="1"
-      :paginationEnabled="false"
-      :autoplay="true"
-      :autoplayTimeout="2000"
-      :loop="true"
-      :v-if="banners"
-    >
-      <Slide class="banner" v-for="b in banners" :key="b.id" :style="b"></Slide>
-    </Carousel>
-  </v-wait>
+      </template>
+      <Carousel
+        :perPage="1"
+        :paginationEnabled="false"
+        :autoplay="true"
+        :autoplayTimeout="2000"
+        :loop="true"
+        :v-if="banners"
+      >
+        <Slide class="banner" v-for="b in banners" :key="b.id" :style="b"></Slide>
+      </Carousel>
+    </v-wait>
+  </div>
 </template>
 
 <script>
@@ -46,12 +48,17 @@ export default {
 
 <style lang="scss" scoped>
 .banner {
-  height: 100vh;
+  height: 80vh;
   background-size: cover;
   background-position: center top;
 }
+
+.banner-wrapper {
+  height: 80vh;
+}
+
 .loader {
-  height: 100vh;
+  height: 80vh;
   display: grid;
   justify-content: center;
   align-items: center;

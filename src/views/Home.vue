@@ -1,10 +1,14 @@
 <template>
-  <Banner/>
+  <div>
+    <Banner/>
+    <Content/>
+  </div>
 </template>
 
 <script>
 // import HelloWorld from '@/components/HelloWorld.vue'
 import Banner from '@/components/home/Banner.vue'
+import Content from '@/components/home/Content.vue'
 import store from '@/store'
 
 export default {
@@ -13,7 +17,8 @@ export default {
     store.dispatch('getBanners')
   },
   components: {
-    Banner
+    Banner,
+    Content
   }
 }
 </script>

@@ -9,11 +9,21 @@ Vue.use(VueWait)
 
 export default new Vuex.Store({
   state: {
-    banners: []
+    banners: [],
+    search: {
+      movie: '',
+      location: ''
+    }
   },
   mutations: {
     GET_BANNER (state, payload) {
       state.banners = payload
+    },
+    SET_SEARCH_MOVIE (state, payload) {
+      state.search.movie = payload
+    },
+    SET_SEARCH_LOCATION (state, payload) {
+      state.search.location = payload
     }
   },
   actions: {

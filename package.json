@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "dayjs": "^1.8.6",
     "epic-spinners": "^1.0.4",
     "firebase": "^5.8.3",
     "heyui": "^1.15.0",

@@ -25,17 +25,21 @@ export default {
   width: 100%;
   height: 50px;
   z-index: 2;
-  background: rgba(121, 121, 121, 0.8);
-}
-
-@supports (
-  (-webkit-backdrop-filter: blur(20px)) or (backdrop-filter: blur(20px))
-) {
-  .bottom-bar {
-    background: rgba(54, 54, 54, 0.6);
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
-  }
+  background: linear-gradient(
+    to right,
+    #2e8bce,
+    #3593d4,
+    #3b9adb,
+    #42a2e1,
+    #49aae7,
+    #48a1de,
+    #4798d5,
+    #468fcc,
+    #3e74b1,
+    #375a96,
+    #2f427a,
+    #272a5f
+  );
 }
 
 .bottom-bar-container {
@@ -60,6 +64,7 @@ export default {
 
 .active {
   color: rgb(255, 255, 0);
+  font-weight: bold;
 }
 
 @media (max-width: 400px) {

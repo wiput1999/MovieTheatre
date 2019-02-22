@@ -32,7 +32,8 @@ export default new Router({
       component: () => import('./views/SeatSelect.vue')
     },
     {
-      path: '/time',
+      path: '/theatre/:id',
+      props: true,
       name: 'time',
       component: () => import('./views/TimeSelect.vue')
     },

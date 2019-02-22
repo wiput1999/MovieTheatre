@@ -5,12 +5,7 @@
       <div>COMMING SOON</div>
     </div>
     <div class="movie-list">
-      <MovieCard></MovieCard>
-      <MovieCard></MovieCard>
-      <MovieCard></MovieCard>
-      <MovieCard></MovieCard>
-      <MovieCard></MovieCard>
-      <MovieCard></MovieCard>
+      <MovieCard v-for="movie in movies" :movie="movie" :key="movie.id"/>
     </div>
   </div>
 </template>
@@ -25,7 +20,7 @@ export default {
     }
   },
   computed: {
-
+    movies () { return this.$store.state.movies }
   },
   methods: {
 

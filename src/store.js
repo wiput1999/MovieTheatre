@@ -12,6 +12,7 @@ export default new Vuex.Store({
     banners: [],
     movies: [],
     showtimes: [],
+    locations: [],
     search: {
       movie: '',
       location: ''
@@ -32,6 +33,9 @@ export default new Vuex.Store({
     },
     GET_SHOWTIMES (state, payload) {
       state.showtimes = payload
+    },
+    GET_LOCATIONS (state, payload) {
+      state.locations = payload
     }
   },
   actions: {
@@ -51,7 +55,19 @@ export default new Vuex.Store({
       commit('GET_BANNER', banners)
       dispatch('wait/end', 'banner.getItems')
     },
+    async getLocations ({ commit, dispatch }) {
+      dispatch('wait/start', 'locations.getItems')
 
+      let movies = []
+      let querySnapshot = await db.collection('theatres').get()
+
+      querySnapshot.forEach(async doc => {
+        movies.push({ id: doc.id, ...doc.data() })
+      })
+
+      commit('GET_LOCATIONS', movies)
+      dispatch('wait/end', 'locations.getItems')
+    },
     async getMovies ({ commit, dispatch }) {
       dispatch('wait/start', 'movie.getItems')
 

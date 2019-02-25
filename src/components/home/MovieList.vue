@@ -1,5 +1,12 @@
 <template>
-  <div>
+  <v-wait for="movie.getItems">
+    <template slot="waiting">
+      <div class="loader">
+        <div>
+          <AtomSpinner :animation-duration="1000" :size="240" color="#fff"/>
+        </div>
+      </div>
+    </template>
     <div class="movie-tab">
       <div>NOW PLAYING</div>
       <div>COMMING SOON</div>
@@ -7,10 +14,11 @@
     <div class="movie-list">
       <MovieCard v-for="movie in movies" :movie="movie" :key="movie.id"/>
     </div>
-  </div>
+  </v-wait>
 </template>
 
 <script>
+import { AtomSpinner } from 'epic-spinners'
 import MovieCard from '@/components/common/MovieCard.vue'
 
 export default {
@@ -26,12 +34,20 @@ export default {
 
   },
   components: {
+    AtomSpinner,
     MovieCard
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.loader {
+  height: 30vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
 .movie-list {
   display: flex;
   flex-wrap: wrap;

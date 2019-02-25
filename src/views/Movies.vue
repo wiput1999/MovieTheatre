@@ -33,6 +33,7 @@ export default {
   name: 'movies',
   beforeMount () {
     store.dispatch('getMovies')
+    store.dispatch('getLocations')
   },
   components: {
     AtomSpinner,

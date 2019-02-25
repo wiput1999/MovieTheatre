@@ -4,8 +4,7 @@
       <AutoComplete
         class="search-input"
         placeholder="MOVIE TITLE"
-        type="key"
-        :option="{loadData : movieList}"
+        :option="{loadData : movieList, key: 'id'}"
         :show="movieTitle"
         v-model="movieTitle"
         @change="onMovieChange"
@@ -14,7 +13,7 @@
         class="search-input"
         placeholder="LOCATION"
         type="key"
-        :option="{loadData : locationList}"
+        :option="{loadData : locationList, key: 'id'}"
         :show="locationTitle"
         v-model="locationTitle"
         @change="onLocationChange"
@@ -35,7 +34,7 @@ export default {
       movieList: (filter, callback) => callback(this.$store.state.movies.filter((x) => (x.title.toLowerCase()).includes(filter.toLowerCase()))),
       locationTitle: '',
       location: '',
-      locationList: (filter, callback) => callback([{ key: '1', title: 'dfgdfdzdgdg' }, { key: '2', title: 'dfgdfgdg' }].filter((x) => x.title.includes(filter)))
+      locationList: (filter, callback) => callback(this.$store.state.locations.filter((x) => (x.title.toLowerCase()).includes(filter.toLowerCase())))
     }
   },
   computed: mapState({
@@ -46,18 +45,20 @@ export default {
   methods: {
     onMovieChange (data, trigger) {
       if (data.value) {
-        this.setSearchMovie(data.value.key)
-        this.movie = data.value.title
+        this.setSearchMovie(data.value.id)
+        this.movieTitle = data.value.title
+        this.movie = data.value.id
       } else {
-        this.movie = null
+        this.movieTitle = null
       }
     },
     onLocationChange (data, trigger) {
       if (data.value) {
-        this.setSearchLocation(data.value.key)
-        this.location = data.value.title
+        this.setSearchLocation(data.value.id)
+        this.locationTitle = data.value.title
+        this.location = data.value.id
       } else {
-        this.location = null
+        this.locationTitle = null
       }
     },
     ...mapMutations({

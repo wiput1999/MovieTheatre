@@ -5,7 +5,7 @@
         <Search/>
         <MovieList/>
         <div class="row">
-          <a class="button">MORE</a>
+          <router-link to="/movies" class="button">MORE</router-link>
         </div>
       </div>
     </div>

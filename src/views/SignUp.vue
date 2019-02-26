@@ -2,25 +2,27 @@
   <div class="background">
     <div class="content">
       <div class="container">
-        <div class="box">
-          <h1>Register</h1>
-          <Form ref="form" label-position="left" :label-width="90">
-            <FormItem label="E-mail" prop="email">
-              <input type="text">
-            </FormItem>
-            <FormItem label="Username" prop="username">
-              <input type="text">
-            </FormItem>
-            <FormItem label="Password" prop="password">
-              <input type="password">
-            </FormItem>
-            <FormItem label="Confirm Password" prop="cpassword">
-              <input type="password">
-            </FormItem>
-            <FormItem>
-              <a class="button">Register</a>
-            </FormItem>
-          </Form>
+        <div>
+          <div class="box">
+            <h1>Register</h1>
+            <Form ref="form" label-position="left" :label-width="140">
+              <FormItem label="E-mail" prop="email">
+                <input type="text" v-model="email">
+              </FormItem>
+              <FormItem label="Username" prop="username">
+                <input type="text" v-model="username">
+              </FormItem>
+              <FormItem label="Password" prop="password">
+                <input type="password" v-model="password">
+              </FormItem>
+              <FormItem label="Confirm Password" prop="cpassword">
+                <input type="password" v-model="cpassword">
+              </FormItem>
+              <FormItem>
+                <a class="button" @click="doRegister">Register</a>
+              </FormItem>
+            </Form>
+          </div>
         </div>
       </div>
     </div>
@@ -59,10 +61,11 @@
   display: flex;
   justify-content: center;
   align-content: center;
+  height: 100vh;
 }
 
 .box {
-  width: 325px;
+  width: 400px;
   padding: 25px;
   background-color: #393939;
   border: #5798f2 6px solid;
@@ -87,6 +90,19 @@
 
 export default {
   name: 'signup',
+  data () {
+    return {
+      email: '',
+      username: '',
+      password: '',
+      cpassword: ''
+    }
+  },
+  methods: {
+    doRegister () {
+      alert('Done!')
+    }
+  },
   components: {
   }
 }

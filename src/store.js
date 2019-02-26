@@ -14,6 +14,7 @@ export default new Vuex.Store({
     movie: {
       found: false
     },
+    theatre: {},
     showtimes: [],
     locations: [],
     search: {
@@ -62,6 +63,9 @@ export default new Vuex.Store({
     },
     GET_MOVIE (state, payload) {
       state.movie = payload
+    },
+    GET_THEATRE (state, payload) {
+      state.theatre = payload
     },
     SET_SEAT_SELECTED (state, payload) {
       state.seatSelected = payload
@@ -164,6 +168,14 @@ export default new Vuex.Store({
         })
       })
 
+      let queryTheatre = await db
+        .collection('theatres')
+        .doc(id)
+        .get()
+
+      let theatre = { ...queryTheatre.data(), id: queryTheatre.id }
+
+      commit('GET_THEATRE', theatre)
       commit('GET_SHOWTIMES', showtimes)
       dispatch('wait/end', 'movie.getShowtimes')
     },
@@ -199,5 +211,7 @@ export default new Vuex.Store({
     setChildPax ({ commit }, pax) {
       commit('SET_CHILD_PAX', pax)
     }
+
+    // User
   }
 })

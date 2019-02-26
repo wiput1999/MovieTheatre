@@ -5,6 +5,7 @@
     </div>
     <div>
       <h1>{{showtime.movie.title}}</h1>
+      <h3>{{theatre.title}}</h3>
       <div class="description">
         <h2>DIGITAL</h2>
         <div class="list">
@@ -55,7 +56,7 @@
 import MovieCard from '@/components/common/MovieCard.vue'
 
 export default {
-  props: ['showtime'],
+  props: ['showtime', 'theatre'],
   components: { MovieCard },
   computed: {
   }

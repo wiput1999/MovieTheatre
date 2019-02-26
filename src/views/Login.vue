@@ -2,20 +2,22 @@
   <div class="background">
     <div class="content">
       <div class="container">
-        <div class="box">
-          <h1>Login</h1>
-          <Form ref="form" label-position="left" :label-width="90">
-            <FormItem label="Username" prop="name">
-              <input type="text">
-            </FormItem>
-            <FormItem label="Password" prop="password">
-              <input type="password">
-            </FormItem>
-            <div class="button-row">
-              <a class="button">Login</a>&nbsp;&nbsp;
-              <router-link to="/register" class="button-register">Register</router-link>
-            </div>
-          </Form>
+        <div>
+          <div class="box">
+            <h1>Login</h1>
+            <Form ref="form" label-position="left" :label-width="90">
+              <FormItem label="Username" prop="name">
+                <input type="text">
+              </FormItem>
+              <FormItem label="Password" prop="password">
+                <input type="password">
+              </FormItem>
+              <div class="button-row">
+                <a class="button" :disabled="loginDisable">Login</a>&nbsp;&nbsp;
+                <router-link to="/register" class="button-register">Register</router-link>
+              </div>
+            </Form>
+          </div>
         </div>
       </div>
     </div>
@@ -54,6 +56,7 @@
   display: flex;
   justify-content: center;
   align-content: center;
+  height: 100vh;
 }
 
 .box {
@@ -94,7 +97,21 @@
 
 export default {
   name: 'login',
+  data () {
+    return {
+      username: '',
+      password: ''
+    }
+  },
   components: {
+  },
+  computed: {
+    loginDisable () {
+      return this.username === '' && this.password === ''
+    }
+  },
+  methods: {
+
   }
 }
 </script>

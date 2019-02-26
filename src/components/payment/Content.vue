@@ -194,8 +194,8 @@ export default {
     return {
       adult: 0,
       child: 0,
-      adultModel: {},
-      childModel: {},
+      adultModel: { key: 0, title: `0 Pax` },
+      childModel: { key: 0, title: `0 Pax` },
       method: 'credit'
     }
   },

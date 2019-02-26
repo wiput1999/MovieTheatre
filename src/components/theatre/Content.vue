@@ -13,7 +13,12 @@
             <div class="day">{{d.day}}</div>
           </div>
         </div>
-        <Showtime :showtime="showtime" v-for="showtime in showtimes" :key="showtime.id"/>
+        <Showtime
+          :showtime="showtime"
+          :theatre="theatre"
+          v-for="showtime in showtimes"
+          :key="showtime.id"
+        />
       </div>
     </div>
   </div>
@@ -51,6 +56,9 @@ export default {
         return showtimes.filter(x => x.movie.id === this.getSearchMovie)
       }
       return showtimes
+    },
+    theatre () {
+      return this.$store.state.theatre
     }
 
   },

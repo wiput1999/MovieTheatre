@@ -31,6 +31,12 @@ export default new Vuex.Store({
     SET_SEARCH_LOCATION (state, payload) {
       state.search.location = payload
     },
+    SET_SEARCH_MOVIE_TITLE (state, payload) {
+      state.search.movieTitle = payload
+    },
+    SET_SEARCH_LOCATION_TITLE (state, payload) {
+      state.search.locationTitle = payload
+    },
     GET_MOVIES (state, payload) {
       state.movies = payload
     },

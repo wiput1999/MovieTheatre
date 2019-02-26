@@ -67,7 +67,7 @@ export default {
   font-weight: bold;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 1200px) {
   .bottom-bar-container {
     width: 95vw;
     padding: 0;

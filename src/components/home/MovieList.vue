@@ -8,8 +8,11 @@
       </div>
     </template>
     <div class="movie-tab">
-      <div>NOW PLAYING</div>
-      <div>COMMING SOON</div>
+      <div @click="onChangeGenre('all')" v-bind:class="{ active: select === 'all' }">ALL</div>
+      <div @click="onChangeGenre('action')" v-bind:class="{ active: select === 'action' }">ACTION</div>
+      <div @click="onChangeGenre('scifi')" v-bind:class="{ active: select === 'scifi' }">SCI-FI</div>
+      <div @click="onChangeGenre('drama')" v-bind:class="{ active: select === 'drama' }">DRAMA</div>
+      <div @click="onChangeGenre('comedy')" v-bind:class="{ active: select === 'comedy' }">COMEDY</div>
     </div>
     <div class="movie-list">
       <MovieCard v-for="movie in movies" :movie="movie" :key="movie.id"/>
@@ -24,14 +27,16 @@ import MovieCard from '@/components/common/MovieCard.vue'
 export default {
   data: function () {
     return {
-
+      select: 'all'
     }
   },
   computed: {
     movies () { return this.$store.state.movies }
   },
   methods: {
-
+    onChangeGenre (genre) {
+      this.select = genre
+    }
   },
   components: {
     AtomSpinner,
@@ -72,11 +77,12 @@ export default {
   div {
     padding: 1em;
     font-size: 1.2em;
+    cursor: pointer;
   }
+}
 
-  div:hover {
-    font-weight: bold;
-    text-decoration: underline;
-  }
+.active {
+  font-weight: bold;
+  text-decoration: underline;
 }
 </style>

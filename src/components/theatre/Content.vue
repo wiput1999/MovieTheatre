@@ -21,6 +21,8 @@
 
 <script>
 import dayjs from 'dayjs'
+import { mapState } from 'vuex'
+
 import Search from '@/components/common/Search.vue'
 import Showtime from '@/components/theatre/Showtime.vue'
 
@@ -33,6 +35,9 @@ export default {
   beforeMount () {
   },
   computed: {
+    ...mapState({
+      getSearchMovie: (state) => state.search.movie
+    }),
     dateList () {
       let dateList = []
       for (let i = -1; i < 6; i++) {
@@ -40,7 +45,13 @@ export default {
       }
       return dateList
     },
-    showtimes () { return this.$store.state.showtimes }
+    showtimes () {
+      let showtimes = this.$store.state.showtimes
+      if (this.getSearchMovie) {
+        return showtimes.filter(x => x.movie.id === this.getSearchMovie)
+      }
+      return showtimes
+    }
 
   },
   components: {

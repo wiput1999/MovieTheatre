@@ -33,23 +33,25 @@ import { mapMutations, mapState } from 'vuex'
 export default {
   data: function () {
     return {
-      movieTitle: '',
-      movie: '',
+      movieTitle: this.$store.state.search.movieTitle,
+      movie: this.$store.state.search.movie,
       movieList: (filter, callback) => callback(this.$store.state.movies.filter((x) => (x.title.toLowerCase()).includes(filter.toLowerCase()))),
-      locationTitle: '',
-      location: '',
+      locationTitle: this.$store.state.search.locationTitle,
+      location: this.$store.state.search.location,
       locationList: (filter, callback) => callback(this.$store.state.locations.filter((x) => (x.title.toLowerCase()).includes(filter.toLowerCase())))
     }
   },
   computed: mapState({
     getSearchMovie: state => state.search.movie,
     getSearchLocation: state => state.search.location,
-    getSearchButton: (state) => (state.search.location !== '')
+    getSearchButton: (state) => (state.search.location === '')
   }),
   methods: {
     onMovieChange (data, trigger) {
       if (data.value) {
         this.setSearchMovie(data.value.id)
+        this.setSearchMovieTitle(data.value.title)
+
         this.movieTitle = data.value.title
         this.movie = data.value.id
       } else {
@@ -59,6 +61,8 @@ export default {
     onLocationChange (data, trigger) {
       if (data.value) {
         this.setSearchLocation(data.value.id)
+        this.setSearchLocationTitle(data.value.title)
+
         this.locationTitle = data.value.title
         this.location = data.value.id
       } else {
@@ -66,6 +70,7 @@ export default {
       }
     },
     onClickSearch (e) {
+      console.log(this.location)
       if (this.location === '') {
         e.preventDefault()
       } else {
@@ -74,7 +79,9 @@ export default {
     },
     ...mapMutations({
       setSearchMovie: 'SET_SEARCH_MOVIE',
-      setSearchLocation: 'SET_SEARCH_LOCATION'
+      setSearchMovieTitle: 'SET_SEARCH_MOVIE_TITLE',
+      setSearchLocation: 'SET_SEARCH_LOCATION',
+      setSearchLocationTitle: 'SET_SEARCH_LOCATION_TITLE'
     })
   },
   components: {

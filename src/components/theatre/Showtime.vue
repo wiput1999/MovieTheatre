@@ -29,9 +29,11 @@
 .list {
   display: flex;
   margin-top: 1em;
+  flex-wrap: wrap;
 
   a {
     color: #fff;
+    margin-top: 0.1em;
     padding: 0.3em 1.7em;
     border: #fff solid 2px;
     border-radius: 25px;

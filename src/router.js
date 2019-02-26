@@ -34,6 +34,12 @@ export default new Router({
       component: () => import('./views/TimeSelect.vue')
     },
     {
+      path: '/payment/:id',
+      props: true,
+      name: 'payment',
+      component: () => import('./views/Payment.vue')
+    },
+    {
       path: '/login',
       name: 'login',
       component: () => import('./views/Login.vue')
@@ -42,6 +48,12 @@ export default new Router({
       path: '/register',
       name: 'register',
       component: () => import('./views/SignUp.vue')
+    },
+    {
+      path: '/finish/:id',
+      props: true,
+      name: 'finish',
+      component: () => import('./views/Finish.vue')
     }
   ]
 })

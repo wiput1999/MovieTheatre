@@ -21,7 +21,19 @@ export default new Vuex.Store({
       location: ''
     },
     seatBooked: ['A1', 'A2'],
-    seatSelected: []
+    seatSelected: [],
+    seatType: {
+      adult: 0,
+      child: 0
+    }
+  },
+  getters: {
+    seatSelected: state => {
+      return state.seatSelected
+    },
+    seatBooked: state => {
+      return state.seatBooked
+    }
   },
   mutations: {
     GET_BANNER (state, payload) {
@@ -53,6 +65,12 @@ export default new Vuex.Store({
     },
     SET_SEAT_SELECTED (state, payload) {
       state.seatSelected = payload
+    },
+    SET_ADULT_PAX (state, payload) {
+      state.seatType.adult = payload
+    },
+    SET_CHILD_PAX (state, payload) {
+      state.seatType.child = payload
     }
   },
   actions: {
@@ -113,7 +131,10 @@ export default new Vuex.Store({
         .doc(id)
         .get()
 
-      let movie = { found: querySnapshot.exists, data: querySnapshot.data() }
+      let movie = {
+        found: querySnapshot.exists,
+        data: { id: querySnapshot.id, ...querySnapshot.data() }
+      }
 
       commit('GET_MOVIE', movie)
       dispatch('wait/end', 'movie.getItems')
@@ -154,6 +175,9 @@ export default new Vuex.Store({
       if (!seat.includes(id)) {
         seat.push(id)
       }
+
+      seat.sort()
+
       commit('SET_SEAT_SELECTED', seat)
     },
 
@@ -164,6 +188,16 @@ export default new Vuex.Store({
       seat = seat.filter(s => s !== id)
 
       commit('SET_SEAT_SELECTED', seat)
+    },
+
+    // Billing
+
+    setAdultPax ({ commit }, pax) {
+      commit('SET_ADULT_PAX', pax)
+    },
+
+    setChildPax ({ commit }, pax) {
+      commit('SET_CHILD_PAX', pax)
     }
   }
 })

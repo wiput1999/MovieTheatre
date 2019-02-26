@@ -8,7 +8,7 @@
       </div>
     </template>
     <Content/>
-    <BottomBar current="payment"/>
+    <BottomBar current="finish"/>
   </v-wait>
 </template>
 
@@ -26,7 +26,7 @@ import store from '@/store'
 
 import { AtomSpinner } from 'epic-spinners'
 
-import Content from '@/components/payment/Content.vue'
+import Content from '@/components/finish/Content.vue'
 import BottomBar from '@/components/common/BottomBar.vue'
 
 export default {

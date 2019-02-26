@@ -35,4 +35,8 @@ body {
 .h-form .h-form-item-label {
   color: #fff;
 }
+
+.h-select-input-border .h-select-show {
+  color: #000;
+}
 </style>

@@ -1,17 +1,15 @@
 <template>
-  <div>
-    <Content/>
-  </div>
+  <div></div>
 </template>
 
-<script>
+<style lang="scss" scoped>
+</style>
 
-import Content from '@/components/movies/Content.vue'
+<script>
 
 export default {
   name: 'payment',
   components: {
-    Content
   }
 }
 </script>

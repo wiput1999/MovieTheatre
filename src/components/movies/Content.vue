@@ -33,9 +33,21 @@ export default {
 <style lang="scss" scoped>
 .background {
   width: 100%;
-  background-image: url("/assets/home/background.jpg");
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(
+    to right,
+    #2e8bce,
+    #3593d4,
+    #3b9adb,
+    #42a2e1,
+    #49aae7,
+    #48a1de,
+    #4798d5,
+    #468fcc,
+    #3e74b1,
+    #375a96,
+    #2f427a,
+    #272a5f
+  );
 }
 
 .content {

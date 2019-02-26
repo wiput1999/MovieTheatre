@@ -31,4 +31,8 @@ body {
 #app {
   color: #fff;
 }
+
+.h-form .h-form-item-label {
+  color: #fff;
+}
 </style>

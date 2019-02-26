@@ -71,9 +71,7 @@ export default {
     },
     onClickSearch (e) {
       console.log(this.location)
-      if (this.location === '') {
-        e.preventDefault()
-      } else {
+      if (this.location !== '') {
         this.$router.push({ name: 'theatre', params: { id: this.location } })
       }
     },

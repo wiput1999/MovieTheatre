@@ -13,6 +13,7 @@ export default {
 
     }
   }
+
 }
 </script>
 
@@ -22,6 +23,7 @@ export default {
   border-radius: 37px;
   width: 80%;
   max-width: 250px;
+  min-width: 200px;
   margin-left: 1em;
   margin-right: 1em;
   margin-bottom: 3em;

@@ -13,6 +13,10 @@
       <div @click="onChangeGenre('scifi')" v-bind:class="{ active: select === 'scifi' }">SCI-FI</div>
       <div @click="onChangeGenre('drama')" v-bind:class="{ active: select === 'drama' }">DRAMA</div>
       <div @click="onChangeGenre('comedy')" v-bind:class="{ active: select === 'comedy' }">COMEDY</div>
+      <div
+        @click="onChangeGenre('thriller')"
+        v-bind:class="{ active: select === 'thriller' }"
+      >THRILLER</div>
     </div>
     <div class="movie-list">
       <MovieCard v-for="movie in movies" :movie="movie" :key="movie.id"/>
@@ -31,7 +35,12 @@ export default {
     }
   },
   computed: {
-    movies () { return this.$store.state.movies }
+    movies () {
+      if (this.select !== 'all') {
+        return this.$store.state.movies.filter(m => m.genre.includes(this.select))
+      }
+      return this.$store.state.movies
+    }
   },
   methods: {
     onChangeGenre (genre) {

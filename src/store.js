@@ -19,7 +19,9 @@ export default new Vuex.Store({
     search: {
       movie: '',
       location: ''
-    }
+    },
+    seatBooked: ['A1', 'A2'],
+    seatSelected: []
   },
   mutations: {
     GET_BANNER (state, payload) {
@@ -48,6 +50,9 @@ export default new Vuex.Store({
     },
     GET_MOVIE (state, payload) {
       state.movie = payload
+    },
+    SET_SEAT_SELECTED (state, payload) {
+      state.seatSelected = payload
     }
   },
   actions: {
@@ -140,6 +145,25 @@ export default new Vuex.Store({
 
       commit('GET_SHOWTIMES', showtimes)
       dispatch('wait/end', 'movie.getShowtimes')
+    },
+    // Seatmap
+
+    // Add Select
+    doAddSeatSelect ({ state, commit }, id) {
+      let seat = state.seatSelected
+      if (!seat.includes(id)) {
+        seat.push(id)
+      }
+      commit('SET_SEAT_SELECTED', seat)
+    },
+
+    // Remove Select
+    doRemoveSeatSelect ({ state, commit }, id) {
+      let seat = state.seatSelected
+
+      seat = seat.filter(s => s !== id)
+
+      commit('SET_SEAT_SELECTED', seat)
     }
   }
 })

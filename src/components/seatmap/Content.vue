@@ -2,9 +2,10 @@
   <div class="background">
     <div class="content">
       <div class="container">
-        <Search/>
         <div class="wrapper">
-          <MovieCard :movie="movie"/>
+          <div>
+            <MovieCard :movie="movie"/>
+          </div>
           <div class="movie-detail">
             <h1>{{movie.title}}</h1>
             <div class="header">
@@ -17,6 +18,7 @@
                 <div class="day">{{d.day}}</div>
               </div>
             </div>
+            <SeatMap/>
           </div>
         </div>
       </div>
@@ -26,8 +28,8 @@
 
 <script>
 import dayjs from 'dayjs'
-import Search from '@/components/common/Search.vue'
 import MovieCard from '@/components/common/MovieCard.vue'
+import SeatMap from '@/components/seatmap/SeatMap.vue'
 
 export default {
   data: function () {
@@ -50,7 +52,7 @@ export default {
 
   },
   components: {
-    Search,
+    SeatMap,
     MovieCard
   }
 }
@@ -59,9 +61,21 @@ export default {
 <style lang="scss" scoped>
 .background {
   width: 100%;
-  background-image: url("/assets/home/background.jpg");
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(
+    to right,
+    #2e8bce,
+    #3593d4,
+    #3b9adb,
+    #42a2e1,
+    #49aae7,
+    #48a1de,
+    #4798d5,
+    #468fcc,
+    #3e74b1,
+    #375a96,
+    #2f427a,
+    #272a5f
+  );
 }
 
 .content {
@@ -79,6 +93,7 @@ export default {
 .header {
   display: flex;
   margin-top: 2em;
+  margin-bottom: 3em;
   text-align: center;
 
   div {
@@ -113,10 +128,10 @@ export default {
 .movie-detail {
   display: flex;
   flex-direction: column;
+  padding-left: 2em;
 
   h1 {
     font-size: 2.5em;
-    padding-top: 0.3em;
     padding-left: 1em;
   }
 }

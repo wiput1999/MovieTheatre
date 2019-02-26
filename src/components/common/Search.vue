@@ -5,7 +5,7 @@
         class="search-input"
         placeholder="MOVIE TITLE"
         :option="{loadData : movieList, key: 'id'}"
-        :show="movieTitle"
+        :show="getSearchMovieTitle"
         v-model="movieTitle"
         @change="onMovieChange"
       />
@@ -33,7 +33,7 @@ import { mapMutations, mapState } from 'vuex'
 export default {
   data: function () {
     return {
-      movieTitle: this.$store.state.search.movieTitle,
+      movieTitle: this.getSearchMovieTitle,
       movie: this.$store.state.search.movie,
       movieList: (filter, callback) => callback(this.$store.state.movies.filter((x) => (x.title.toLowerCase()).includes(filter.toLowerCase()))),
       locationTitle: this.$store.state.search.locationTitle,
@@ -43,6 +43,7 @@ export default {
   },
   computed: mapState({
     getSearchMovie: state => state.search.movie,
+    getSearchMovieTitle: state => state.search.movieTitle,
     getSearchLocation: state => state.search.location,
     getSearchButton: (state) => (state.search.location === '')
   }),

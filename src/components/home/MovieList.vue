@@ -19,12 +19,18 @@
       >THRILLER</div>
     </div>
     <div class="movie-list">
-      <MovieCard v-for="movie in movies" :movie="movie" :key="movie.id"/>
+      <MovieCard
+        v-for="movie in movies"
+        :movie="movie"
+        @click.native="goSearch(movie)"
+        :key="movie.id"
+      />
     </div>
   </v-wait>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import { AtomSpinner } from 'epic-spinners'
 import MovieCard from '@/components/common/MovieCard.vue'
 
@@ -45,7 +51,15 @@ export default {
   methods: {
     onChangeGenre (genre) {
       this.select = genre
-    }
+    },
+    goSearch (movie) {
+      this.setSearchMovie(movie.id)
+      this.setSearchMovieTitle(movie.title)
+    },
+    ...mapMutations({
+      setSearchMovie: 'SET_SEARCH_MOVIE',
+      setSearchMovieTitle: 'SET_SEARCH_MOVIE_TITLE'
+    })
   },
   components: {
     AtomSpinner,

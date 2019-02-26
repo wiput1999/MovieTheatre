@@ -8,7 +8,11 @@
       <div class="description">
         <h2>DIGITAL</h2>
         <div class="list">
-          <a v-for="data in showtime.time" :key="data.id">{{data}}</a>
+          <router-link
+            :to="`/seats/${showtime.movie.id}`"
+            v-for="data in showtime.time"
+            :key="data.id"
+          >{{data}}</router-link>
         </div>
       </div>
     </div>

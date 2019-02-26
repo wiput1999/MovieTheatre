@@ -127,7 +127,7 @@ export default new Vuex.Store({
 
         showtimes.push({
           id: doc.id,
-          movie: movie.data(),
+          movie: { ...movie.data(), id: movie.id },
           time: doc.data().time
         })
       })

@@ -6,7 +6,7 @@
 
 <script>
 
-import Content from '@/components/movies/Content.vue'
+import Content from '@/components/seatmap/Content.vue'
 
 export default {
   name: 'seatselect',

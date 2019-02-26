@@ -22,11 +22,6 @@ export default new Router({
       component: () => import('./views/Movies.vue')
     },
     {
-      path: '/promotion',
-      name: 'promotion',
-      component: () => import('./views/About.vue')
-    },
-    {
       path: '/seats',
       name: 'seats',
       component: () => import('./views/SeatSelect.vue')

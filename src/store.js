@@ -11,6 +11,9 @@ export default new Vuex.Store({
   state: {
     banners: [],
     movies: [],
+    movie: {
+      found: false
+    },
     showtimes: [],
     locations: [],
     search: {
@@ -28,7 +31,7 @@ export default new Vuex.Store({
     SET_SEARCH_LOCATION (state, payload) {
       state.search.location = payload
     },
-    GET_MOVIE (state, payload) {
+    GET_MOVIES (state, payload) {
       state.movies = payload
     },
     GET_SHOWTIMES (state, payload) {
@@ -36,9 +39,13 @@ export default new Vuex.Store({
     },
     GET_LOCATIONS (state, payload) {
       state.locations = payload
+    },
+    GET_MOVIE (state, payload) {
+      state.movie = payload
     }
   },
   actions: {
+    // Get all banner
     async getBanners ({ commit, dispatch }) {
       dispatch('wait/start', 'banner.getItems')
 
@@ -55,6 +62,8 @@ export default new Vuex.Store({
       commit('GET_BANNER', banners)
       dispatch('wait/end', 'banner.getItems')
     },
+
+    // Get all locations
     async getLocations ({ commit, dispatch }) {
       dispatch('wait/start', 'locations.getItems')
 
@@ -68,6 +77,8 @@ export default new Vuex.Store({
       commit('GET_LOCATIONS', movies)
       dispatch('wait/end', 'locations.getItems')
     },
+
+    // Get all movies
     async getMovies ({ commit, dispatch }) {
       dispatch('wait/start', 'movie.getItems')
 
@@ -78,9 +89,26 @@ export default new Vuex.Store({
         movies.push({ id: doc.id, ...doc.data() })
       })
 
-      commit('GET_MOVIE', movies)
+      commit('GET_MOVIES', movies)
       dispatch('wait/end', 'movie.getItems')
     },
+
+    // Get movie by id
+    async getMovie ({ commit, dispatch }, id) {
+      dispatch('wait/start', 'movie.getItems')
+
+      let querySnapshot = await db
+        .collection('movies')
+        .doc(id)
+        .get()
+
+      let movie = { found: querySnapshot.exists, data: querySnapshot.data() }
+
+      commit('GET_MOVIE', movie)
+      dispatch('wait/end', 'movie.getItems')
+    },
+
+    // Get showtime by theatre
     async getShowtimes ({ commit, dispatch }, id) {
       dispatch('wait/start', 'movie.getShowtimes')
 

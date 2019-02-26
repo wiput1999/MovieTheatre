@@ -17,9 +17,6 @@
               <router-link to="/movies">Movie</router-link>
             </li>
             <li>
-              <router-link to="/promotions">Promotion</router-link>
-            </li>
-            <li>
               <router-link to="/login" class="button">SIGN IN</router-link>
             </li>
           </ul>

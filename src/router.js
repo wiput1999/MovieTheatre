@@ -22,14 +22,15 @@ export default new Router({
       component: () => import('./views/Movies.vue')
     },
     {
-      path: '/seats',
+      path: '/seats/:id',
+      props: true,
       name: 'seats',
       component: () => import('./views/SeatSelect.vue')
     },
     {
       path: '/theatre/:id',
       props: true,
-      name: 'time',
+      name: 'theatre',
       component: () => import('./views/TimeSelect.vue')
     },
     {

@@ -1,4 +1,5 @@
 {
-    "prettier.bracketSpacing": false,
-    "prettier.eslintIntegration": true
+  "prettier.bracketSpacing": false,
+  "prettier.eslintIntegration": true,
+  "editor.tabSize": 2
 }

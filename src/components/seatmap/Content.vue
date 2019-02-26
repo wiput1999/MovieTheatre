@@ -3,17 +3,22 @@
     <div class="content">
       <div class="container">
         <Search/>
-        <div class="row">
-          <div
-            v-for="d in dateList"
-            :key="d.date"
-            v-bind:class="{active: today.format('MMM DD') === d.date}"
-          >
-            <div class="date">{{d.date}}</div>
-            <div class="day">{{d.day}}</div>
+        <div class="wrapper">
+          <MovieCard :movie="movie"/>
+          <div class="movie-detail">
+            <h1>{{movie.title}}</h1>
+            <div class="header">
+              <div
+                v-for="d in dateList"
+                :key="d.date"
+                v-bind:class="{active: today.format('MMM DD') === d.date}"
+              >
+                <div class="date">{{d.date}}</div>
+                <div class="day">{{d.day}}</div>
+              </div>
+            </div>
           </div>
         </div>
-        <Showtime :showtime="showtime" v-for="showtime in showtimes" :key="showtime.id"/>
       </div>
     </div>
   </div>
@@ -22,7 +27,7 @@
 <script>
 import dayjs from 'dayjs'
 import Search from '@/components/common/Search.vue'
-import Showtime from '@/components/theatre/Showtime.vue'
+import MovieCard from '@/components/common/MovieCard.vue'
 
 export default {
   data: function () {
@@ -30,22 +35,23 @@ export default {
       today: dayjs()
     }
   },
+  props: ['id'],
   beforeMount () {
   },
   computed: {
     dateList () {
       let dateList = []
-      for (let i = -1; i < 6; i++) {
+      for (let i = -1; i < 2; i++) {
         dateList.push({ date: this.today.add(i, 'day').format('MMM DD'), day: this.today.add(i, 'day').format('ddd').toUpperCase() })
       }
       return dateList
     },
-    showtimes () { return this.$store.state.showtimes }
+    movie () { return this.$store.state.movie.data }
 
   },
   components: {
     Search,
-    Showtime
+    MovieCard
   }
 }
 </script>
@@ -70,22 +76,9 @@ export default {
   padding: 100px 0;
 }
 
-@supports (
-  (-webkit-backdrop-filter: blur(20px)) or (backdrop-filter: blur(20px))
-) {
-  .content {
-    background: rgba(0, 0, 0, 0.5);
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
-  }
-}
-
-.row {
+.header {
   display: flex;
-  justify-content: center;
-  margin-top: 3em;
-  margin-bottom: 4em;
-  width: 100%;
+  margin-top: 2em;
   text-align: center;
 
   div {
@@ -109,6 +102,23 @@ export default {
   }
 
   border-bottom: #fff solid 2px;
+}
+
+.wrapper {
+  display: flex;
+  margin-top: 4em;
+  width: 100%;
+}
+
+.movie-detail {
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    font-size: 2.5em;
+    padding-top: 0.3em;
+    padding-left: 1em;
+  }
 }
 
 .button {

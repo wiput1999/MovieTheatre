@@ -19,9 +19,9 @@
         @change="onLocationChange"
       />
       <router-link
-        :to="`/theatre/${location}`"
+        :to="`/theatre/${this.location}`"
         class="button"
-        @click.native="getSearchButton"
+        @click.native="onClickSearch"
       >SEARCH</router-link>
     </div>
   </div>
@@ -63,6 +63,13 @@ export default {
         this.location = data.value.id
       } else {
         this.locationTitle = null
+      }
+    },
+    onClickSearch (e) {
+      if (this.location === '') {
+        e.preventDefault()
+      } else {
+        this.$router.push({ name: 'theatre', params: { id: this.location } })
       }
     },
     ...mapMutations({

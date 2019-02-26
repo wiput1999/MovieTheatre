@@ -37,6 +37,11 @@ export default {
     store.dispatch('getMovies')
     store.dispatch('getLocations')
   },
+  watch: {
+    '$route.params.id': (id) => {
+      store.dispatch('getShowtimes', id)
+    }
+  },
   components: {
     AtomSpinner,
     BottomBar,

@@ -12,15 +12,6 @@ export default {
     return {
 
     }
-  },
-  computed: {
-
-  },
-  methods: {
-
-  },
-  components: {
-
   }
 }
 </script>

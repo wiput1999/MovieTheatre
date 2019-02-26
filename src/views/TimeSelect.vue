@@ -35,6 +35,7 @@ export default {
   beforeMount () {
     store.dispatch('getShowtimes', this.id)
     store.dispatch('getMovies')
+    store.dispatch('getLocations')
   },
   components: {
     AtomSpinner,

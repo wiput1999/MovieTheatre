@@ -15,6 +15,8 @@ export default {
   name: 'home',
   beforeMount () {
     store.dispatch('getBanners')
+    store.dispatch('getMovies')
+    store.dispatch('getLocations')
   },
   components: {
     Banner,

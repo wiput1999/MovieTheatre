@@ -18,7 +18,11 @@
         v-model="locationTitle"
         @change="onLocationChange"
       />
-      <a class="button" :disabled="getSearchButton">SEARCH</a>
+      <router-link
+        :to="`/theatre/${location}`"
+        class="button"
+        @click.native="getSearchButton"
+      >SEARCH</router-link>
     </div>
   </div>
 </template>
@@ -40,7 +44,7 @@ export default {
   computed: mapState({
     getSearchMovie: state => state.search.movie,
     getSearchLocation: state => state.search.location,
-    getSearchButton: (state) => (state.search.movie === '' && state.search.location === '')
+    getSearchButton: (state) => (state.search.location !== '')
   }),
   methods: {
     onMovieChange (data, trigger) {

@@ -84,11 +84,12 @@ export default {
   },
   methods: {
     onSeatClick (id) {
-      console.log(id)
-      if (this.seatSelected.includes(id)) {
-        store.dispatch('doRemoveSeatSelect', id)
-      } else {
-        store.dispatch('doAddSeatSelect', id)
+      if (!this.seatBooked.includes(id)) {
+        if (this.seatSelected.includes(id)) {
+          store.dispatch('doRemoveSeatSelect', id)
+        } else {
+          store.dispatch('doAddSeatSelect', id)
+        }
       }
     },
     getClasses: (seatSelected, seatBooked, id) => {

@@ -49,7 +49,9 @@
             class="payment-method-box"
             v-bind:class="{methodSelect: method === 'promptpay'}"
             @click="changeMethod('promptpay')"
-          >PROMPTPAY</div>
+          >PROMPTPAY
+          <img src="https://tidbits.com/uploads/2017/11/QR-Code-Moby-Dick-Gutenberg.png" alt="" srcset="" style="width:50%">
+          </div>
           <div
             class="payment-method-box"
             v-bind:class="{methodSelect: method === 'cash'}"

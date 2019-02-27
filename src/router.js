@@ -45,6 +45,11 @@ export default new Router({
       component: () => import('./views/Login.vue')
     },
     {
+      path: '/refund',
+      name: 'refund',
+      component: () => import('./views/Refund.vue')
+    },
+    {
       path: '/register',
       name: 'register',
       component: () => import('./views/SignUp.vue')

@@ -20,8 +20,8 @@
             <div class="ticket-price-wrapper price-total">Total : {{total}} Baht</div>
           </div>
           <div class="ticket-action">
-            <router-link to="/finish" class="finish-button">E-Mail</router-link>
-            <router-link to="/finish" class="finish-button">Print</router-link>
+            <div class="finish-button" @click="show">E-Mail</div>
+            <div class="finish-button" @click="print">Print</div>
           </div>
         </div>
       </div>
@@ -162,6 +162,12 @@ export default {
       } else {
         this.child = 0
       }
+    },
+    show (){
+      alert("Sended to your email")
+    },
+    print (){
+      window.print();
     }
   },
   components: {

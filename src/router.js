@@ -28,6 +28,11 @@ export default new Router({
       component: () => import('./views/SeatSelect.vue')
     },
     {
+      path: '/theatres/',
+      name: 'theatres',
+      component: () => import('./views/Theatres.vue')
+    },
+    {
       path: '/theatre/:id',
       props: true,
       name: 'theatre',

@@ -19,12 +19,7 @@
       >THRILLER</div>
     </div>
     <div class="movie-list">
-      <MovieCard
-        v-for="movie in movies"
-        :movie="movie"
-        @click.native="goSearch(movie)"
-        :key="movie.id"
-      />
+      <MovieCard v-for="movie in movies" :movie="movie" @click.native="goSearch()" :key="movie.id"/>
     </div>
   </v-wait>
 </template>
@@ -52,9 +47,8 @@ export default {
     onChangeGenre (genre) {
       this.select = genre
     },
-    goSearch (movie) {
-      this.setSearchMovie(movie.id)
-      this.setSearchMovieTitle(movie.title)
+    goSearch () {
+      this.$router.push({ name: 'theatres' })
     },
     ...mapMutations({
       setSearchMovie: 'SET_SEARCH_MOVIE',
@@ -77,6 +71,7 @@ export default {
 }
 
 .movie-list {
+  cursor: pointer;
   display: flex;
   flex-wrap: wrap;
   align-items: center;

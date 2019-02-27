@@ -27,6 +27,8 @@ export default new Vuex.Store({
       adult: 0,
       child: 0
     },
+    allShowtimes: [],
+    allTheatres: [],
     login: true
   },
   getters: {
@@ -79,6 +81,12 @@ export default new Vuex.Store({
     },
     SET_LOGIN (state, payload) {
       state.login = payload
+    },
+    SET_ALL_SHOWTIMES (state, payload) {
+      state.allShowtimes = payload
+    },
+    SET_ALL_THEATRE (state, payload) {
+      state.allTheatres = payload
     }
   },
   actions: {
@@ -181,6 +189,41 @@ export default new Vuex.Store({
 
       commit('GET_THEATRE', theatre)
       commit('GET_SHOWTIMES', showtimes)
+      dispatch('wait/end', 'movie.getShowtimes')
+    },
+
+    async getAllShowtimes ({ state, commit, dispatch }) {
+      dispatch('wait/start', 'movie.getShowtimes')
+
+      let allTheatres = []
+
+      let queryTheatre = await db.collection('theatres').get()
+
+      queryTheatre.forEach(async doc => {
+        let showtimes = []
+        let querySnapshot = await db
+          .collection('theatres')
+          .doc(doc.id)
+          .collection('showtimes')
+          .get()
+
+        await querySnapshot.forEach(async doc => {
+          let movie = await db
+            .collection('movies')
+            .doc(doc.data().movie)
+            .get()
+
+          showtimes.push({
+            id: doc.id,
+            movie: { ...movie.data(), id: movie.id },
+            time: doc.data().time
+          })
+        })
+
+        allTheatres.push({ ...doc.data(), id: doc.id, showtimes })
+      })
+
+      commit('SET_ALL_SHOWTIMES', allTheatres)
       dispatch('wait/end', 'movie.getShowtimes')
     },
     // Seatmap

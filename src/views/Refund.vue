@@ -188,7 +188,6 @@
 </style>
 
 <script>
-import MovieCard from '@/components/common/MovieCard.vue'
 export default {
   name: 'refund',
   data: function () {

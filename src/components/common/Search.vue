@@ -18,10 +18,19 @@
         v-model="locationTitle"
         @change="onLocationChange"
       />
+
+      <router-link
+        to="/theatres/"
+        class="button"
+        @click.native="onClickSearch"
+        v-show="this.getSearchLocation === ''"
+      >SEARCH</router-link>
+
       <router-link
         :to="`/theatre/${this.location}`"
         class="button"
         @click.native="onClickSearch"
+        v-show="this.getSearchLocation"
       >SEARCH</router-link>
     </div>
   </div>
@@ -71,7 +80,6 @@ export default {
       }
     },
     onClickSearch (e) {
-      console.log(this.location)
       if (this.location !== '') {
         this.$router.push({ name: 'theatre', params: { id: this.location } })
       }

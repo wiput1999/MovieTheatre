@@ -209,6 +209,11 @@ export default {
       return this.username === '' && this.password === ''
     }
   },
+  beforeMount () {
+    if (!this.$store.state.login) {
+      this.$router.push({ name: 'login' })
+    }
+  },
   methods: {
     show () {
       alert('Sended to your email')

@@ -11,7 +11,7 @@
         <div class="list">
           <router-link
             :to="`/seats/${showtime.movie.id}`"
-            v-for="data in showtime.time"
+            v-for="data in showtimes.time"
             :key="data.id"
           >{{data}}</router-link>
         </div>

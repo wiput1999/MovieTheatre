@@ -33,7 +33,11 @@ export default {
   name: 'payment',
   props: ['id'],
   beforeMount () {
-    store.dispatch('getMovie', this.id)
+    if (!this.$store.state.login) {
+      this.$router.push({ name: 'login' })
+    } else {
+      store.dispatch('getMovie', this.id)
+    }
   },
   components: {
     Content,

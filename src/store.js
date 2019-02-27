@@ -29,7 +29,7 @@ export default new Vuex.Store({
     },
     allShowtimes: [],
     allTheatres: [],
-    login: true
+    login: false
   },
   getters: {
     seatSelected: state => {

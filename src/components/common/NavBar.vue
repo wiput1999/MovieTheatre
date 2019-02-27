@@ -16,11 +16,12 @@
             <li>
               <router-link to="/movies">Movie</router-link>
             </li>
-            <li>
+            <li v-show="login">
               <router-link to="/refund">Your Seats</router-link>
             </li>
             <li>
-              <router-link to="/login" class="button">SIGN IN</router-link>
+              <router-link to="/login" class="button" v-show="!login">SIGN IN</router-link>
+              <a class="button" @click="doSignOut" v-show="login">SIGN OUT</a>
             </li>
           </ul>
         </div>
@@ -133,3 +134,20 @@
   }
 }
 </style>
+
+<script>
+import store from '@/store'
+
+export default {
+  computed: {
+    login () {
+      return this.$store.state.login
+    }
+  },
+  methods: {
+    doSignOut () {
+      store.dispatch('setLogin', false)
+    }
+  }
+}
+</script>

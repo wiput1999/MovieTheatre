@@ -26,7 +26,8 @@ export default new Vuex.Store({
     seatType: {
       adult: 0,
       child: 0
-    }
+    },
+    login: true
   },
   getters: {
     seatSelected: state => {
@@ -75,6 +76,9 @@ export default new Vuex.Store({
     },
     SET_CHILD_PAX (state, payload) {
       state.seatType.child = payload
+    },
+    SET_LOGIN (state, payload) {
+      state.login = payload
     }
   },
   actions: {
@@ -210,8 +214,11 @@ export default new Vuex.Store({
 
     setChildPax ({ commit }, pax) {
       commit('SET_CHILD_PAX', pax)
-    }
+    },
 
     // User
+    setLogin ({ commit }, payload) {
+      commit('SET_LOGIN', payload)
+    }
   }
 })

@@ -219,7 +219,7 @@ export default {
     },
     cancel (blog) {
       var r = confirm('Want to cancel your seats?')
-      if (r == true) {
+      if (r === true) {
         blog.del = true
       }
     }

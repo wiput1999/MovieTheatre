@@ -163,11 +163,11 @@ export default {
         this.child = 0
       }
     },
-    show (){
-      alert("Sended to your email")
+    show () {
+      alert('Sended to your email')
     },
-    print (){
-      window.print();
+    print () {
+      window.print()
     }
   },
   components: {

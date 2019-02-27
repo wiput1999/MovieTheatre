@@ -13,7 +13,7 @@
                 <input type="password">
               </FormItem>
               <div class="button-row">
-                <a class="button" :disabled="loginDisable">Login</a>&nbsp;&nbsp;
+                <a class="button" :disabled="loginDisable" @click="doLogin">Login</a>&nbsp;&nbsp;
                 <router-link to="/register" class="button-register">Register</router-link>
               </div>
             </Form>
@@ -94,6 +94,7 @@
 </style>
 
 <script>
+import store from '@/store'
 
 export default {
   name: 'login',
@@ -111,7 +112,10 @@ export default {
     }
   },
   methods: {
-
+    doLogin () {
+      store.dispatch('setLogin', true)
+      this.$router.push({ name: 'home' })
+    }
   }
 }
 </script>
